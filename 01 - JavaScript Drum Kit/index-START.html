@@ -57,11 +57,36 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  window.addEventListener('keydown', function (e){
-    console.log(e.keycode)
-  });
-</script>
+  <div class="playing"> styled diff </div>
+
+  <script>
+    //listen for keytouch.
+    
+    window.addEventListener('keydown', function(e){
+     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    //const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    //console.log(audio);
+    // if (!audio) return;
+    audio.play();  
+    changeStyle(e);
+    });
+
+    function changeStyle(e){
+      //console.log("playing file");
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+      console.log(key);
+
+      // const key = document.querySelector("${e.keyCode}"]`);
+
+      key.classList.add('playing');
+
+
+    }
+    
+    //document.addEventListener('keydown', function(e){ console.log("this")});
+    
+    </script>
 
 
 </body>
