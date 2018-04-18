@@ -82,17 +82,16 @@
       
       
       key.classList.add('playing');
-
-     setTimeout(removePlaying(key), 10000);
-
-     function removePlaying(key){
-      key.classList.remove('playing');
-     }
-
+      setTimeout(function() { key.classList.remove('playing');}, 1000)
 
     }
     
     //document.addEventListener('keydown', function(e){ console.log("this")});
+
+
+    //transition event.. he is watching for the end of the transition .. when the transition ends trigger something else to do something.
+
+    //transitionend is a keyword in js from css transition 
     
     </script>
 
