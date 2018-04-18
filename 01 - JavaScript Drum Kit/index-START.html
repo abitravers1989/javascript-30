@@ -79,7 +79,15 @@
 
       // const key = document.querySelector("${e.keyCode}"]`);
 
+      
+      
       key.classList.add('playing');
+
+     setTimeout(removePlaying(key), 10000);
+
+     function removePlaying(key){
+      key.classList.remove('playing');
+     }
 
 
     }
