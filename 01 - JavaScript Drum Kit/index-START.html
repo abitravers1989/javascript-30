@@ -76,22 +76,35 @@
     window.addEventListener('keydown', changeStyle);
     
 
-    function changeStyle(e){
+    function changeStyle(eventObject){
      
-      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${eventObject.keyCode}"]`);
+
+//benefit is this function is never going to be used elsewhere so there is no need for this to sit in memory and exist in memory
+//outside of the parent function.
+//so it goes as soon as it's parent does.
+
+//passing a variable into multiple functions down from each other is actually worse code than this even though may seem OO . seperating out.
+ 
+
+// have to attach the listener before the event actually happens.. if you don't listen before the event you don't know when it ends. 
+    document.addEventListener('transitionend', removePlaying);
+
+
+
+       function removePlaying(){
+          //const key = document.querySelector(`.key[data-key="${eventObject.keyCode}"]`);
+         //setTimeout(function() { key.classList.remove('playing');}, 1000)
+          key.classList.remove('playing');
+        }
 
       console.log(key);
       key.classList.add('playing');
-      document.addEventListener('transitionend', removePlaying);
+     
      
     }
 
-    function removePlaying(e){
-      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-      //setTimeout(function() { key.classList.remove('playing');}, 1000)
-      key.classList.remove('playing');
-
-    }
+   
     
     //document.addEventListener('keydown', function(e){ console.log("this")});
 
